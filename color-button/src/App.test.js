@@ -11,7 +11,7 @@ test('button has correct initial corlor', () => {
     // Assert that the button's background color has changed
     expect(colorButton).toHaveClass('action-button-blue');
     // Assert that the button's text has changed
-    expect(colorButton.textContent).toBe('Change to red');
+    expect(colorButton.textContent).toHaveContext('Change to red');
 });
 
 test('initial conditions', () => {
