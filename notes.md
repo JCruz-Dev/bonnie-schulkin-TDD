@@ -76,3 +76,28 @@ BDD defineds process for different groups to interact.
 ### Accesibility and Findind Elements
 
 TL (React Testing Library): recomends findig elements in by accessibility handels.
+
+### Screen Query methhods
+
+`command[All]ByQueryType`
+
+# command
+
+get: expect element to be in the DOM
+query: expect element not to be in the DOM
+find: expect element to appear async
+
+# [ALL]
+
+-   (exclude) expect only one match
+-   (include) expect multiple matches
+
+# Query Type
+
+-   Role (most prefered)
+-   AltText (images)
+-   Text (display elements)
+-   Form elements
+    -   PlaceholderText (inputs)
+    -   LabelText (inputs)
+    -   DisplayValue
