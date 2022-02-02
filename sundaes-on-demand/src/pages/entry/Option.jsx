@@ -3,9 +3,11 @@ import { useEffect, useState } from 'react';
 import ScoopOptions from './ScoopOption';
 import Row from 'react-bootstrap/Row';
 import ToppingOption from './ToppingOption';
+import AlertBanner from '../common/AlertBanner';
 
 const Options = ({ optionType }) => {
     const [items, setItems] = useState([]);
+    const [error, setError] = useState(false);
     useEffect(() => {
         let mounted = true;
         axios
@@ -15,7 +17,11 @@ const Options = ({ optionType }) => {
                     setItems(res.data);
                 }
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                if (mounted) {
+                    setError(true);
+                }
+            });
         return () => (mounted = false);
     }, [optionType]);
 
@@ -29,6 +35,9 @@ const Options = ({ optionType }) => {
             imagePath={item.imagePath}
         />
     ));
+    if (error) {
+        return <AlertBanner />;
+    }
     return <Row>{optionItems}</Row>;
 };
 export default Options;
